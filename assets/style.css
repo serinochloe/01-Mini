@@ -1,9 +1,35 @@
+/* write html, write css, write javascript, make it all work  */
 
-.header {
-    font-size: 26px;
-    color: #ffa500
-    background-color: #0000FF
-
+body {
+    display:flex;    
 }
 
-.footer {}
+#card {
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+}
+
+#title {
+    text-align:center;
+}
+
+#question {
+   /* display:none; */
+   
+}
+
+#button {
+}
+
+#opt1 {
+display:none;
+} 
+
+#opt2 {
+display:none;
+}
+
+#opt3 {
+display:none;
+}
