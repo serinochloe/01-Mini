@@ -4,6 +4,10 @@ body {
     display:flex;    
 }
 
+header {
+    align-content:flex-start;
+}
+
 #card {
     padding:40px;
     display:flex;
@@ -15,7 +19,7 @@ body {
 }
 
 #question {
-   /* display:none; */
+   visibility: hidden;
    
 }
 
@@ -23,13 +27,13 @@ body {
 }
 
 #opt1 {
-display:none;
+visibility: hidden;
 } 
 
 #opt2 {
-display:none;
+visibility: hidden;
 }
 
 #opt3 {
-display:none;
+visibility: hidden;
 }
