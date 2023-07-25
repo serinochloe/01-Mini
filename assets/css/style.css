@@ -16,6 +16,15 @@ header {
 
 #title {
     text-align:center;
+    visibility:visible;
+}
+
+#welcome {
+    
+};
+
+#start {
+    
 }
 
 #question {
@@ -37,3 +46,9 @@ visibility: hidden;
 #opt3 {
 visibility: hidden;
 }
+
+#opt4 {
+    visibility: hidden;
+    }
+
+
