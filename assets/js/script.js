@@ -1,13 +1,8 @@
 // set global variables
 
-// var opt1 = document.getElementById("opt1");
-// var opt2 = document.getElementById("opt2");
-// var opt3 = document.getElementById("opt3");
-// var opt4 = document.getElementById("opt4");
-// var title = document.getElementById("title");
-// var welcome = document.getElementById("welcome");
+
 var startButton = document.getElementById("start");
-// var userGuess = document.getElementById("card");
+
 var welcomeCard = document.getElementById("welcome-card");
 var quizCard = document.getElementById("quiz-card");
 var questionText = document.querySelector(".question-text");
@@ -63,33 +58,46 @@ function startTimer(){
     }, 1000);
 };
 
-function showQuiz() {
+function startQuiz() {
     welcomeCard.setAttribute("style","visibility: hidden;");
     quizCard.setAttribute("style", "visibility: visible;");
-    displayQuestions();
+    firstQuestion();
  
 };
 
-function displayQuestions() {
-    // var questionsLength = questions.length;
-    // for (var i=0; i<2; i++) {
+function firstQuestion() {
     document.getElementById("question-text").innerHTML = "<h1>" + questions[0].question + "</h1>";
     document.querySelector("#answer-options").innerHTML =
     "<li><button>" + questions[0].answer + "</button></li>" +
     "<li><button>" + questions[0].options [0] + "</button></li>" +
     "<li><button>" + questions[0].options[1]+ "</button></li>"+
     "<li><button>" + questions[0].options[2]+ "</button></li>";
-    
+    answerButton.addEventListener("click", showQuestions)
 };
 
+let i=0
+function showQuestions() {
+   if (i<=3) {
+        i++;
+        document.getElementById("question-text").innerHTML =
+        "<h1>" + questions[i].question + "</h1>";
+        document.querySelector("#answer-options").innerHTML =
+        "<li><button>" + questions[i].answer + "</button></li>" +
+        "<li><button>" + questions[i].options[0] + "</button></li>" +
+         "<li><button>" + questions[i].options[1]+ "</button></li>"+
+        "<li><button>" + questions[i].options[2]+ "</button></li>";
+    }else {}
+};
+
+   
+    
+         
 
 
 
 // event listeners
 startButton.addEventListener("click", startTimer);
-startButton.addEventListener("click", showQuiz);
+startButton.addEventListener("click", startQuiz);
 startButton.addEventListener("click", startTimer);
 
-// answerButton.addEventListener("click", );
-
-// userGuess.addEventListener("click", showAnswer);
+answerButton.addEventListener("click", showQuestions);
