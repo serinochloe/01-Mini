@@ -2,24 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>"Coding Game"</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 </head>
 <body>
-    <header id="count"></header>
-    <card id="card">
-        <h1 id="title">Coding Quiz Challenge </h1>
-        <p id = "welcome">Welcome to a timed game of multiple choice to test your coding prowess</p>
+    <header id="timer"></header>
+    <card id="welcome-card">
+        <h1>Coding Quiz Challenge </h1>
+        <p>Welcome to a timed game of multiple choice to test your coding prowess</p>
         <button id ="start"> Start </button>
-        <h1 id="question">Question</h1>
-        <button id="opt1">1.opt1</button>
-        <button id="opt2">2.opt2</button>
-        <button id="opt3">3.opt3</button>
-        <button id="opt4">3.opt4</button>
-        
+    </card>
+    <card id="quiz-card">
+        <div id="question-text"><h1>Question</h1>
+        </div>
+        <ul id="answer-options">
+            <!-- <ul><button id="opt1">1.opt1</button></ul> -->
+            <!-- <button id="opt1">1.opt1</button>
+            <span id="check">&check;</span>
+            <button id="opt2">2.opt2</button>
+            <button id="opt3">3.opt3</button>
+            <button id="opt4">3.opt4</button> -->
+            </ul>
+        </div>
     </card>
     
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>

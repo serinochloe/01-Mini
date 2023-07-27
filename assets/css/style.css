@@ -8,7 +8,8 @@ header {
     align-content:flex-start;
 }
 
-#card {
+#quiz-card {
+    visibility:hidden;
     padding:40px;
     display:flex;
     flex-direction:column;
@@ -19,36 +20,43 @@ header {
     visibility:visible;
 }
 
-#welcome {
-    
+#welcome-card {
+    justify-content:center;
+   text-align:center;
 };
 
 #start {
     
 }
 
-#question {
-   visibility: hidden;
+#options {
+    display:inline-block;
+}
+
+#question-text {
+  
    
 }
 
-#button {
+button {
+    
 }
 
+
 #opt1 {
-visibility: hidden;
+
 } 
 
 #opt2 {
-visibility: hidden;
+
 }
 
 #opt3 {
-visibility: hidden;
+
 }
 
 #opt4 {
-    visibility: hidden;
+    
     }
 
 
