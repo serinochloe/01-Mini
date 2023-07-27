@@ -15,6 +15,15 @@ header {
     flex-direction:column;
 }
 
+#results-card {
+    visibility:hidden;
+}
+
+#quiz-footer {
+
+}
+
+
 #title {
     text-align:center;
     visibility:visible;
@@ -23,7 +32,11 @@ header {
 #welcome-card {
     justify-content:center;
    text-align:center;
-};
+}
+
+#results-card {
+
+}
 
 #start {
     

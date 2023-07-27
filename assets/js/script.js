@@ -7,6 +7,7 @@ var welcomeCard = document.getElementById("welcome-card");
 var quizCard = document.getElementById("quiz-card");
 var questionText = document.querySelector(".question-text");
 var answerButton = document.getElementById("answer-options");
+var resultsCard = document.getElementById("results-card");
 
 // define question array 
 let questions = [
@@ -86,9 +87,24 @@ function showQuestions() {
         "<li><button>" + questions[i].options[0] + "</button></li>" +
          "<li><button>" + questions[i].options[1]+ "</button></li>"+
         "<li><button>" + questions[i].options[2]+ "</button></li>";
-    }else {}
+    } else {
+        quizCard.setAttribute("style", "visibility: hidden;");
+        resultsCard.setAttribute ("style","visibility:visible;");
+        resultsCard.textContent = "<h1> Thanks for Playing </h1>";
+        // optionSelected();
+        questCounter();
+      };
 };
 
+function questCounter() {
+    quizFooter.innerHTML = "<p> Correct: 0/3 Incorrect: 0/3 </p>";
+    // function optionSelected(){
+    //   let userAns = document.querySelector("#answer-options").innerHTML 
+    //  answerButton.onclick = console.log(userAns);
+    // };
+  };
+
+function optionSelected() {};
    
     
          
