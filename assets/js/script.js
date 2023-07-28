@@ -6,10 +6,12 @@ var startButton = document.getElementById("start");
 var welcomeCard = document.getElementById("welcome-card");
 var quizCard = document.getElementById("quiz-card");
 var questionText = document.querySelector(".question-text");
-var answerButton = document.getElementById("answer-options");
+// var answerButton = document.getElementById("answer-options");
 var resultsCard = document.getElementById("results-card");
 var questionText = document.getElementById("question-text");
-var answerOptionsText = document.querySelector("#answer-options")
+var answerOptionsText = document.querySelector("#answer-options");
+var quizFooter = document.getElementById("quiz-footer");
+
 
 // define question array 
 let questions = [
@@ -67,39 +69,65 @@ function startQuiz() {
     firstQuestion();
  
 };
+let i=0;
+// var correctAnswer = document.querySelector(questions[i].answer);
 
 function firstQuestion() {
     questionText.innerHTML = "<h1>" + questions[0].question + "</h1>";
     answerOptionsText.innerHTML =
-    "<li><button>" + questions[0].answer + "</button></li>" +
-    "<li><button>" + questions[0].options [0] + "</button></li>" +
-    "<li><button>" + questions[0].options[1]+ "</button></li>"+
-    "<li><button>" + questions[0].options[2]+ "</button></li>";
-    
+    "<li class = 'answer'><button>" + questions[0].answer + "</button></li>" +
+    "<li class = 'option'><button>" + questions[0].options [0] + "</button></li>" +
+    "<li class = 'option'><button>" + questions[0].options[1]+ "</button></li>"+
+    "<li class = 'option'><button>" + questions[0].options[2]+ "</button></li>";
+  help ();
+    questCounter();
+    logAnswer ();
+
 };
 
-let i=0
+function help () {
+    var incorrectAnswer = document.querySelector(".option");
+    var correctAnswer =  document.querySelector(".answer");
+    incorrectAnswer.onClick = function () {
+        console.log("clicked");
+    };
+    incorrectAnswer.addEventListener("click", showQuestions);
+};
+
+
 function showQuestions() {
    if (i<2) {
         i++;
         questionText.innerHTML =
         "<h1>" + questions[i].question + "</h1>";
-        answerOptions.innerHTML =
-        "<li><button>" + questions[i].answer + "</button></li>" +
-        "<li><button>" + questions[i].options[0] + "</button></li>" +
-         "<li><button>" + questions[i].options[1]+ "</button></li>"+
-        "<li><button>" + questions[i].options[2]+ "</button></li>";
+        answerOptionsText.innerHTML =
+        "<li class = 'answer'><button>" + questions[i].answer + "</button></li>" +
+        "<li class = 'option'><button>" + questions[i].options[0] + "</button></li>" +
+         "<li class = 'option'><button>" + questions[i].options[1]+ "</button></li>"+
+        "<li class = 'option'><button>" + questions[i].options[2]+ "</button></li>";
+       questCounter();
+       logAnswer ();
     } else {
         quizCard.setAttribute("style", "visibility: hidden;");
         resultsCard.setAttribute ("style","visibility:visible;");
         resultsCard.textContent = "Thanks for Playing"
         // optionSelected();
         questCounter();
+        logAnswer ();
       };
 };
 
+function logAnswer () {
+    // answerOptionsText.onclick = function() {
+    //     console.log(answerOptionsText.firstChild.textContent);
+    // };
+   
+};
+
+  
+
 function questCounter() {
-    quizFooter.innerHTML = "<p> Correct: 0/3 Incorrect: 0/3 </p>";
+   quizFooter.innerHTML = "<p> Correct: 0/3 Incorrect: 0/3 </p>";
     // function optionSelected(){
     //   let userAns = document.querySelector("#answer-options").innerHTML 
     //  answerButton.onclick = console.log(userAns);
@@ -109,7 +137,6 @@ function questCounter() {
 function optionSelected() {};
    
     
-         
 
 
 
@@ -118,4 +145,5 @@ startButton.addEventListener("click", startTimer);
 startButton.addEventListener("click", startQuiz);
 startButton.addEventListener("click", startTimer);
 
-answerButton.addEventListener("click", showQuestions);
+// answerOptionsText.addEventListener("click", showQuestions);
+
