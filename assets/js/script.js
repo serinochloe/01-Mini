@@ -48,7 +48,7 @@ let questions = [
     }
 ];
 
-// functions
+
 
 
 function startQuiz() {
@@ -82,7 +82,6 @@ function firstQuestion() {
 
 };
 
-
 function showQuestions() {
     var selected= document.querySelectorAll(".option");
    if (i<2) {
@@ -106,18 +105,16 @@ function logSelection(event) {
     let guess = event.target.textContent;
     let correctAnswer = questions[i].answer;
  if (guess === correctAnswer) {
-    quizFooter.innerHTML = "Correct!";
-   
-
+    console.log(correctAnswer);
+    console.log(guess);
+    quizFooter.innerHTML = "<p>Correct!</p>";
  } else {
-    quizFooter.innerHTML = "Incorrect!";
     counter--;
+    // console.log(questions[i].options[i]);
+    quizFooter.innerHTML = "<p> Incorrect!</p>";
+    
  };
 };
-
-
-
-
 
 function showResults() {
     quizCard.setAttribute("style", "visibility: hidden;");
@@ -131,8 +128,7 @@ var userInfo = {
     userName: userName.value,
     userScore: userScore.value
 };
-// console.log(userName.value);
-// console.log(userScore.value);
+
 localStorage.setItem("score", JSON.
 stringify(userInfo));
 function renderMessage() {
