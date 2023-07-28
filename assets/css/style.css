@@ -1,8 +1,5 @@
 
 
-body {
-    
-}
 
 header {
     visibility: visible;
@@ -22,6 +19,10 @@ header {
     visibility:hidden;
     display:center;
    
+}
+
+#results.footer {
+
 }
 
 #title {

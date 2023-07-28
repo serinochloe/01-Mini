@@ -110,7 +110,6 @@ function logSelection(event) {
     quizFooter.innerHTML = "<p>Correct!</p>";
  } else {
     counter--;
-    // console.log(questions[i].options[i]);
     quizFooter.innerHTML = "<p> Incorrect!</p>";
     
  };
