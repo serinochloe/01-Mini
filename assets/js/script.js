@@ -28,27 +28,37 @@ let questions = [
     },
     {
         id: 1,
-        question: "This is the second question?",
-        answer: "This is the second answer",
+        question: "What is the type of loop that continues through a block of code as long as the specified condition remains",
+        answer: "For Loop",
         options: [
-            "This is a wrong choice",
-            "This one is wrong too",
-            "This is not correct",
+            "Conditional Loop",
+            "Else Loop",
+            "While Loop",
         ]
     },
     {
         id: 2,
-        question: "This is the third question?",
-        answer: "This is the thirdanswer",
+        question: "CSS stands for ____ Style Sheets.",
+        answer: "Cascading",
         options: [
-            "This is a third wrong choice",
-            "This one is third wrong too",
-            "This is not third correct",
+            "Concept",
+            "Curious",
+            "Concave",
         ]
     }
 ];
 
 // functions
+
+
+function startQuiz() {
+    welcomeCard.setAttribute("style","visibility: hidden;");
+    quizCard.setAttribute("style", "visibility: visible;");
+    firstQuestion();
+    startTimer();
+};
+
+
 var counter = 2;
 function startTimer(){
     
@@ -61,15 +71,7 @@ function startTimer(){
     }, 1000);
 };
 
-function startQuiz() {
-    welcomeCard.setAttribute("style","visibility: hidden;");
-    quizCard.setAttribute("style", "visibility: visible;");
-    firstQuestion();
- 
-};
 let i=0;
-// var correctAnswer = document.querySelector(questions[i].answer);
-
 function firstQuestion() {
     questionText.innerHTML = "<h1>" + questions[0].question + "</h1>";
     answerOptionsText.innerHTML =
@@ -103,8 +105,6 @@ let queCount = 0
 function logSelection(event) {
     let guess = event.target.textContent;
     let correctAnswer = questions[i].answer;
-console.log(guess);
-console.log(correctAnswer);
  if (guess === correctAnswer) {
     quizFooter.innerHTML = "Correct!";
    
@@ -131,16 +131,21 @@ var userInfo = {
     userName: userName.value,
     userScore: userScore.value
 };
-console.log(userName);
-console.log()
+// console.log(userName.value);
+// console.log(userScore.value);
 localStorage.setItem("score", JSON.
 stringify(userInfo));
-renderMessage ();
+function renderMessage() {
+    var lastUser = JSON.parse(localStorage.getItem(userInfo));
+    console.log(lastUser);
+    document.querySelector(".message").textContent = userInfo;
+};
+
 });
 
 function renderMessage() {
     var lastUser = JSON.parse(localStorage.getItem(userInfo));
-    document.querySelector(".message").textContent = lastUser.userName + lastUser.userScore
+    document.querySelector(".message").textContent = userInfo;userScore
 };
 
     
