@@ -9,18 +9,21 @@ var resultsCard = document.getElementById("results-card");
 var questionText = document.getElementById("question-text");
 var answerOptionsText = document.querySelector("#answer-options");
 var quizFooter = document.getElementById("quiz-footer");
+var saveButton = document.getElementById('save');
+var userName = document.getElementById("name");
+var userScore = document.getElementById("score");
 
 
 //  question array 
 let questions = [
     {
         id: 0,
-        question: "This is the first question?",
-        answer: "This is the first answer",
+        question: "What tag defines a division or the beginning/end of an individual section in an HTML document?",
+        answer: "< div >",
         options: [
-            "This is an incorrect option",
-            "This is another incorrect option",
-            "This is another wrong choice",
+            "< img >",
+            "< meta >",
+            "< a href >",
         ]
     },
     {
@@ -46,8 +49,17 @@ let questions = [
 ];
 
 // functions
-
-
+var counter = 2;
+function startTimer(){
+    
+    setInterval(function() {
+    document.getElementById("timer").innerHTML = counter + " seconds remaining";  
+        if (counter ===0) {
+            clearInterval(counter);
+            showResults();
+        };
+    }, 1000);
+};
 
 function startQuiz() {
     welcomeCard.setAttribute("style","visibility: hidden;");
@@ -82,11 +94,8 @@ function showQuestions() {
          "<li><button class = 'option' onclick='logSelection(event)'>" + questions[i].options[1]+ "</button></li>"+
         "<li><button class = 'option' onclick = 'logSelection(event)'>" + questions[i].options[2]+ "</button></li>";
     } else {
-        quizCard.setAttribute("style", "visibility: hidden;");
+        showResults();
         timer.setAttribute("style", "visibility:hidden;")
-        
-        resultsCard.setAttribute ("style","visibility: visible;");
-        resultsCard.innerHTML = "<h1>Thanks for Playing</h1>";
       };
 };
 let queCount = 0 
@@ -103,23 +112,35 @@ console.log(correctAnswer);
  } else {
     quizFooter.innerHTML = "Incorrect!";
     counter--;
- }
-//     console.log("wrong");
-// };
+ };
 };
 
-var counter = 2;
 
-function startTimer(){
-    
-    setInterval(function() {
-    document.getElementById("timer").innerHTML = counter + " seconds remaining";  
-        if (counter ===0) {
-            clearInterval(counter);
-            document.getElementById("timer").innerHTML = "Sorry, out of time";
-            quizCard.setAttribute("style", "visibility: hidden;");
-        };
-    }, 1000);
+
+
+
+function showResults() {
+    quizCard.setAttribute("style", "visibility: hidden;");
+    resultsCard.setAttribute ("style","visibility: visible;");  
+};
+
+saveButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+var userInfo = {
+    userName: userName.value,
+    userScore: userScore.value
+};
+console.log(userName);
+console.log()
+localStorage.setItem("score", JSON.
+stringify(userInfo));
+renderMessage ();
+});
+
+function renderMessage() {
+    var lastUser = JSON.parse(localStorage.getItem(userInfo));
+    document.querySelector(".message").textContent = lastUser.userName + lastUser.userScore
 };
 
     
