@@ -1,53 +1,51 @@
-/* write html, write css, write javascript, make it all work  */
+
 
 body {
-    display:flex;    
+    
 }
 
 header {
-    align-content:flex-start;
+    visibility: visible;
 }
 
 #quiz-card {
+    
     visibility:hidden;
     padding:40px;
-    display:flex;
-    flex-direction:column;
+    display:center;
+   
 }
 
 #results-card {
+    
+    padding:20px;
     visibility:hidden;
+    display:center;
+   
+}
+
+#title {
+    
+    padding:10px;
+    text-align:center;
+    visibility:visible;
+}
+
+#welcome-card {
+   text-align:center;
 }
 
 #quiz-footer {
 
 }
 
-
-#title {
-    text-align:center;
-    visibility:visible;
-}
-
-#welcome-card {
-    justify-content:center;
-   text-align:center;
-}
-.answer {
-    
-}
-
 #results-card {
-
+visibility: hidden;
 }
 
-#start {
-    
-}
 
-#options {
-    display:inline-block;
-}
+
+
 
 
 

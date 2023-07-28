@@ -1,6 +1,6 @@
 
 
-
+var timer = document.getElementById("timer");
 var startButton = document.getElementById("start");
 var welcomeCard = document.getElementById("welcome-card");
 var quizCard = document.getElementById("quiz-card");
@@ -47,18 +47,7 @@ let questions = [
 
 // functions
 
-function startTimer(){
-    var counter = 5;
-    setInterval(function() {
-        counter--;
-        if (counter >=0) {
-            document.getElementById("timer").innerHTML = counter + " seconds remaining";
-        } if (counter ===0) {
-            clearInterval(counter);
-            document.getElementById("timer").innerHTML = "Sorry, out of time";
-        }
-    }, 1000);
-};
+
 
 function startQuiz() {
     welcomeCard.setAttribute("style","visibility: hidden;");
@@ -72,14 +61,10 @@ let i=0;
 function firstQuestion() {
     questionText.innerHTML = "<h1>" + questions[0].question + "</h1>";
     answerOptionsText.innerHTML =
-    "<li class = 'answer'><button onclick='logSelection(event)'>" + questions[0].answer + "</button></li>" +
-    "<li class = 'option'><button onclick='logSelection(event)'>" + questions[0].options [0] + "</button></li>" +
-    "<li class = 'option'><button onclick='logSelection(event)'>" + questions[0].options[1]+ "</button></li>"+
-    "<li class = 'option'><button onclick='logSelection(event)'>" + questions[0].options[2]+ "</button></li>";
-    questCounter();
-    // logAnswer ();
-    
-    
+    "<li ><button class = 'answer' onclick='logSelection(event)'>" + questions[0].answer + "</button></li>" +
+    "<li><button class = 'option' onclick='logSelection(event)'>" + questions[0].options [0] + "</button></li>" +
+    "<li><button class = 'option' onclick='logSelection(event)'>" + questions[0].options[1]+ "</button></li>"+
+    "<li><button class = 'option' onclick='logSelection(event)'>" + questions[0].options[2]+ "</button></li>";   
 
 };
 
@@ -92,37 +77,51 @@ function showQuestions() {
         questionText.innerHTML =
         "<h1>" + questions[i].question + "</h1>";
         answerOptionsText.innerHTML =
-        "<li class = 'answer'><button onclick = 'logSelection(event)'>" + questions[i].answer + "</button></li>" +
-        "<li class = 'option'><button onclick ='logSelection(event)'>" + questions[i].options[0] + "</button></li>" +
-         "<li class = 'option'><button onclick='logSelection(event)'>" + questions[i].options[1]+ "</button></li>"+
-        "<li class = 'option'><button onclick = 'logSelection(event)'>" + questions[i].options[2]+ "</button></li>";
-        questCounter();
+        "<button class = 'answer' onclick = 'logSelection(event)'>" + questions[i].answer + "</button>" +
+        "<li><button class = 'option' onclick ='logSelection(event)'>" + questions[i].options[0] + "</button></li>" +
+         "<li><button class = 'option' onclick='logSelection(event)'>" + questions[i].options[1]+ "</button></li>"+
+        "<li><button class = 'option' onclick = 'logSelection(event)'>" + questions[i].options[2]+ "</button></li>";
     } else {
         quizCard.setAttribute("style", "visibility: hidden;");
-        resultsCard.setAttribute ("style","visibility:visible;");
-        resultsCard.textContent = "Thanks for Playing"
-        // optionSelected();
-        questCounter();
-        // logAnswer ();
+        timer.setAttribute("style", "visibility:hidden;")
+        
+        resultsCard.setAttribute ("style","visibility: visible;");
+        resultsCard.innerHTML = "<h1>Thanks for Playing</h1>";
       };
 };
+let queCount = 0 
 
 function logSelection(event) {
-console.log(event.target.textContent);
+    let guess = event.target.textContent;
+    let correctAnswer = questions[i].answer;
+console.log(guess);
+console.log(correctAnswer);
+ if (guess === correctAnswer) {
+    quizFooter.innerHTML = "Correct!";
+   
+
+ } else {
+    quizFooter.innerHTML = "Incorrect!";
+    counter--;
+ }
+//     console.log("wrong");
+// };
 };
-   
 
+var counter = 2;
 
+function startTimer(){
+    
+    setInterval(function() {
+    document.getElementById("timer").innerHTML = counter + " seconds remaining";  
+        if (counter ===0) {
+            clearInterval(counter);
+            document.getElementById("timer").innerHTML = "Sorry, out of time";
+            quizCard.setAttribute("style", "visibility: hidden;");
+        };
+    }, 1000);
+};
 
-
-  
-
-function questCounter() {
-   quizFooter.innerHTML = "<p> Correct: 0/3 Incorrect: 0/3 </p>";
-  };
-
-function optionSelected() {};
-   
     
 
 
