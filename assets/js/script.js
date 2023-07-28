@@ -79,25 +79,38 @@ function firstQuestion() {
     "<li class = 'option'><button>" + questions[0].options [0] + "</button></li>" +
     "<li class = 'option'><button>" + questions[0].options[1]+ "</button></li>"+
     "<li class = 'option'><button>" + questions[0].options[2]+ "</button></li>";
-  help ();
     questCounter();
-    logAnswer ();
+    // logAnswer ();
+    
+    
 
 };
 
 function help () {
+   
     var incorrectAnswer = document.querySelector(".option");
     var correctAnswer =  document.querySelector(".answer");
-    incorrectAnswer.onClick = function () {
-        console.log("clicked");
-    };
+    // incorrectAnswer.addEventListener("click", showQuestions);
+    const correctAnswerPressed = i => {
+  
+        const isButton = i.target.nodeName === 'BUTTON';
+        
+        if(!isButton) {
+          return
+        }
+        
+        console.log(e.target.id);
+        
+      };
     incorrectAnswer.addEventListener("click", showQuestions);
 };
 
 
 function showQuestions() {
+    var choices= document.querySelectorAll(".option");
    if (i<2) {
         i++;
+        // create option buttons 
         questionText.innerHTML =
         "<h1>" + questions[i].question + "</h1>";
         answerOptionsText.innerHTML =
@@ -105,19 +118,26 @@ function showQuestions() {
         "<li class = 'option'><button>" + questions[i].options[0] + "</button></li>" +
          "<li class = 'option'><button>" + questions[i].options[1]+ "</button></li>"+
         "<li class = 'option'><button>" + questions[i].options[2]+ "</button></li>";
+        // log user choice
+        // choices[i].setAttribute("onclick", "optionSelected(this)");
+        choices[i].onclick = function () { console.log(choices[i])};
        questCounter();
-       logAnswer ();
+    //    logAnswer ();
     } else {
         quizCard.setAttribute("style", "visibility: hidden;");
         resultsCard.setAttribute ("style","visibility:visible;");
         resultsCard.textContent = "Thanks for Playing"
         // optionSelected();
         questCounter();
-        logAnswer ();
+        // logAnswer ();
       };
 };
 
-function logAnswer () {
+function optionSelected(userGuess) {
+    console.log("hello");
+    let userAns = userGuess.textContent;
+    console.log(userAns);
+   
     // answerOptionsText.onclick = function() {
     //     console.log(answerOptionsText.firstChild.textContent);
     // };
@@ -143,7 +163,7 @@ function optionSelected() {};
 // event listeners
 startButton.addEventListener("click", startTimer);
 startButton.addEventListener("click", startQuiz);
-startButton.addEventListener("click", startTimer);
 
-// answerOptionsText.addEventListener("click", showQuestions);
+
+answerOptionsText.addEventListener("click", showQuestions);
 
