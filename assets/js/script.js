@@ -1,19 +1,17 @@
-// set global variables
+
 
 
 var startButton = document.getElementById("start");
-
 var welcomeCard = document.getElementById("welcome-card");
 var quizCard = document.getElementById("quiz-card");
 var questionText = document.querySelector(".question-text");
-// var answerButton = document.getElementById("answer-options");
 var resultsCard = document.getElementById("results-card");
 var questionText = document.getElementById("question-text");
 var answerOptionsText = document.querySelector("#answer-options");
 var quizFooter = document.getElementById("quiz-footer");
 
 
-// define question array 
+//  question array 
 let questions = [
     {
         id: 0,
@@ -46,9 +44,8 @@ let questions = [
         ]
     }
 ];
-// define functions
 
-
+// functions
 
 function startTimer(){
     var counter = 5;
@@ -75,10 +72,10 @@ let i=0;
 function firstQuestion() {
     questionText.innerHTML = "<h1>" + questions[0].question + "</h1>";
     answerOptionsText.innerHTML =
-    "<li class = 'answer'><button>" + questions[0].answer + "</button></li>" +
-    "<li class = 'option'><button>" + questions[0].options [0] + "</button></li>" +
-    "<li class = 'option'><button>" + questions[0].options[1]+ "</button></li>"+
-    "<li class = 'option'><button>" + questions[0].options[2]+ "</button></li>";
+    "<li class = 'answer'><button onclick='logSelection(event)'>" + questions[0].answer + "</button></li>" +
+    "<li class = 'option'><button onclick='logSelection(event)'>" + questions[0].options [0] + "</button></li>" +
+    "<li class = 'option'><button onclick='logSelection(event)'>" + questions[0].options[1]+ "</button></li>"+
+    "<li class = 'option'><button onclick='logSelection(event)'>" + questions[0].options[2]+ "</button></li>";
     questCounter();
     // logAnswer ();
     
@@ -86,43 +83,20 @@ function firstQuestion() {
 
 };
 
-function help () {
-   
-    var incorrectAnswer = document.querySelector(".option");
-    var correctAnswer =  document.querySelector(".answer");
-    // incorrectAnswer.addEventListener("click", showQuestions);
-    const correctAnswerPressed = i => {
-  
-        const isButton = i.target.nodeName === 'BUTTON';
-        
-        if(!isButton) {
-          return
-        }
-        
-        console.log(e.target.id);
-        
-      };
-    incorrectAnswer.addEventListener("click", showQuestions);
-};
-
 
 function showQuestions() {
-    var choices= document.querySelectorAll(".option");
+    var selected= document.querySelectorAll(".option");
    if (i<2) {
         i++;
         // create option buttons 
         questionText.innerHTML =
         "<h1>" + questions[i].question + "</h1>";
         answerOptionsText.innerHTML =
-        "<li class = 'answer'><button>" + questions[i].answer + "</button></li>" +
-        "<li class = 'option'><button>" + questions[i].options[0] + "</button></li>" +
-         "<li class = 'option'><button>" + questions[i].options[1]+ "</button></li>"+
-        "<li class = 'option'><button>" + questions[i].options[2]+ "</button></li>";
-        // log user choice
-        // choices[i].setAttribute("onclick", "optionSelected(this)");
-        choices[i].onclick = function () { console.log(choices[i])};
-       questCounter();
-    //    logAnswer ();
+        "<li class = 'answer'><button onclick = 'logSelection(event)'>" + questions[i].answer + "</button></li>" +
+        "<li class = 'option'><button onclick ='logSelection(event)'>" + questions[i].options[0] + "</button></li>" +
+         "<li class = 'option'><button onclick='logSelection(event)'>" + questions[i].options[1]+ "</button></li>"+
+        "<li class = 'option'><button onclick = 'logSelection(event)'>" + questions[i].options[2]+ "</button></li>";
+        questCounter();
     } else {
         quizCard.setAttribute("style", "visibility: hidden;");
         resultsCard.setAttribute ("style","visibility:visible;");
@@ -133,25 +107,18 @@ function showQuestions() {
       };
 };
 
-function optionSelected(userGuess) {
-    console.log("hello");
-    let userAns = userGuess.textContent;
-    console.log(userAns);
-   
-    // answerOptionsText.onclick = function() {
-    //     console.log(answerOptionsText.firstChild.textContent);
-    // };
-   
+function logSelection(event) {
+console.log(event.target.textContent);
 };
+   
+
+
+
 
   
 
 function questCounter() {
    quizFooter.innerHTML = "<p> Correct: 0/3 Incorrect: 0/3 </p>";
-    // function optionSelected(){
-    //   let userAns = document.querySelector("#answer-options").innerHTML 
-    //  answerButton.onclick = console.log(userAns);
-    // };
   };
 
 function optionSelected() {};
