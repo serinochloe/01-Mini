@@ -12,6 +12,6 @@ Test your coding prowess with this multiple choice quiz. The quiz demonstrates J
 
 ## Sources 
 
-Questions taked from codeconquest's practice quizzes: <https://www.codeconquest.com/coding-quizzes>
+Questions take from codeconquest's practice quizzes: <https://www.codeconquest.com/coding-quizzes>
 
 
