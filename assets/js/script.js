@@ -130,15 +130,21 @@ saveButton.addEventListener("click", function(event) {
         userName: userName.value,
         userScore: userScore.value
     };
-
+   
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    renderMessage();
 });
+
+
 
 function renderMessage () {
     var lastUser = JSON.parse(localStorage.getItem("userInfo"));
-    if (lastUser !== null) {}
+    if (lastUser !== null) {
     document.querySelector(".message").textContent = "Name: " + lastUser.userName + " Score: " + lastUser.userScore;
+   
 };
+};
+
 
 
 
