@@ -9,9 +9,8 @@ var resultsCard = document.getElementById("results-card");
 var questionText = document.getElementById("question-text");
 var answerOptionsText = document.querySelector("#answer-options");
 var quizFooter = document.getElementById("quiz-footer");
-var saveButton = document.getElementById('save');
-var userName = document.getElementById("name");
-var userScore = document.getElementById("score");
+
+
 
 
 //  question array 
@@ -79,14 +78,12 @@ function firstQuestion() {
     "<li><button class = 'option' onclick='logSelection(event)'>" + questions[0].options [0] + "</button></li>" +
     "<li><button class = 'option' onclick='logSelection(event)'>" + questions[0].options[1]+ "</button></li>"+
     "<li><button class = 'option' onclick='logSelection(event)'>" + questions[0].options[2]+ "</button></li>";   
-
 };
 
 function showQuestions() {
     var selected= document.querySelectorAll(".option");
    if (i<2) {
         i++;
-        // create option buttons 
         questionText.innerHTML =
         "<h1>" + questions[i].question + "</h1>";
         answerOptionsText.innerHTML =
@@ -101,12 +98,12 @@ function showQuestions() {
 };
 let queCount = 0 
 
+// respond to user guess 
+
 function logSelection(event) {
     let guess = event.target.textContent;
     let correctAnswer = questions[i].answer;
  if (guess === correctAnswer) {
-    console.log(correctAnswer);
-    console.log(guess);
     quizFooter.innerHTML = "<p>Correct!</p>";
  } else {
     counter--;
@@ -120,37 +117,38 @@ function showResults() {
     resultsCard.setAttribute ("style","visibility: visible;");  
 };
 
+// save and display user info once game is over 
+
+var saveButton = document.getElementById('save');
+var userName = document.getElementById("name");
+var userScore = document.getElementById("score");
+
+
 saveButton.addEventListener("click", function(event) {
     event.preventDefault();
+    var userInfo = {
+        userName: userName.value,
+        userScore: userScore.value
+    };
 
-var userInfo = {
-    userName: userName.value,
-    userScore: userScore.value
-};
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    // console.log(userInfo);
 
-localStorage.setItem("score", JSON.
-stringify(userInfo));
-function renderMessage() {
-    var lastUser = JSON.parse(localStorage.getItem(userInfo));
-    console.log(lastUser);
-    document.querySelector(".message").textContent = userInfo;
-};
-
+    renderMessage();
 });
 
-function renderMessage() {
-    var lastUser = JSON.parse(localStorage.getItem(userInfo));
-    document.querySelector(".message").textContent = userInfo;userScore
-};
 
-    
+function renderMessage () {
+    var lastUser = JSON.parse(localStorage.getItem("userInfo"));
+    if (lastUser !== null) {}
+    console.log(lastUser);
+    document.querySelector(".message").textContent = "Name: " + lastUser.userName + " Score: " + lastUser.userScore;
+};
 
 
 
 // event listeners
 startButton.addEventListener("click", startTimer);
 startButton.addEventListener("click", startQuiz);
-
-
 answerOptionsText.addEventListener("click", showQuestions);
 
