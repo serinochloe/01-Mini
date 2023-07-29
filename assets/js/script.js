@@ -132,16 +132,11 @@ saveButton.addEventListener("click", function(event) {
     };
 
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
-    // console.log(userInfo);
-
-    renderMessage();
 });
-
 
 function renderMessage () {
     var lastUser = JSON.parse(localStorage.getItem("userInfo"));
     if (lastUser !== null) {}
-    console.log(lastUser);
     document.querySelector(".message").textContent = "Name: " + lastUser.userName + " Score: " + lastUser.userScore;
 };
 
@@ -151,4 +146,3 @@ function renderMessage () {
 startButton.addEventListener("click", startTimer);
 startButton.addEventListener("click", startQuiz);
 answerOptionsText.addEventListener("click", showQuestions);
-
