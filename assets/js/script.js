@@ -144,6 +144,7 @@ function renderMessage () {
 
 
 
+
 // event listeners
 startButton.addEventListener("click", startTimer);
 startButton.addEventListener("click", startQuiz);
